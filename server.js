@@ -1,17 +1,24 @@
 const http = require('http');
-const html = `
-   <html>
-      <head>
-         <meta charset="UTF-8">
-      </head>
-      <body>
-         <h1>Casa do Código</h1>
-      </body>
-   </html>
-`;
+const html = (path) => {
+   return `<html>
+              <head>
+                <meta charset="UTF-8">
+              </head>
+              <body>
+                <h1>${path}</h1>
+              </body>
+           </html>`;
+} 
 
 const server = http.createServer(function(req, resp){
-   resp.end(html);
+   if(req.url == '/'){
+      resp.end(html('Home'));
+   }
+
+   if(req.url == '/livros'){
+      resp.end(html('livros'));
+   }
+   
 });
 
 server.listen(3000);
