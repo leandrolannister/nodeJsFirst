@@ -1,3 +1,5 @@
+require('../../config/html');
+
 module.exports = (app) => {
    app.get('/', (req, resp) => {
       resp.send(html('Home'));
@@ -7,15 +9,3 @@ module.exports = (app) => {
       resp.send(html('livros'));
    });
 }
-
-
-const html = (path) => {
-  return `<html>
-            <head>
-              <meta charset="UTF-8">
-            </head>
-            <body>
-              <h1>${path}</h1>
-            </body>
-         </html>`;
- }
