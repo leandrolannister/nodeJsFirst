@@ -5,7 +5,9 @@ module.exports = (app) => {
       resp.send(html('Home'));
    });
 
-   app.get('/livros', (req, resp) => {
-      resp.send(html('livros'));
+   app.get('/livro', (req, resp) => {
+      resp.marko(
+         require('../view/livros/lista/lista.marko')
+      );
    });
 }

@@ -2,7 +2,7 @@
   "name": "nodejsfirst",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js"
@@ -11,16 +11,17 @@
     "type": "git",
     "url": "git+https://github.com/leandrolannister/nodeJsFirst.git"
   },
-  "author": "",
+  "author": "hendrix",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/leandrolannister/nodeJsFirst/issues"
   },
   "homepage": "https://github.com/leandrolannister/nodeJsFirst#readme",
   "dependencies": {
-    "express": "4.16.3"
+    "express": "4.16.3",
+    "marko": "4.13.4-1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.14"
+    "nodemon": "1.18.4"
   }
 }
