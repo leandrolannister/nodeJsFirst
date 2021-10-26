@@ -19,7 +19,7 @@ function render(input, out, __component, component, state) {
 
   component_globals_tag({}, out);
 
-  out.w("<h1>Listagem de Livros</h1><table><thead><tr><th>Id</th><th>Nome</th></tr> </thead><tbody><tr><td>1</td><td>PHP</td></tr></tbody></table> ");
+  out.w("<h1>Listagem de Livros</h1><table><thead><tr><th>Id</th><th>Nome</th></tr> </thead><tbody><tr><td>1</td><td>PHP</td></tr> </tbody></table> ");
 
   init_components_tag({}, out);
 
