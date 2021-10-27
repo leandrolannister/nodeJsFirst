@@ -17,6 +17,10 @@ module.exports = (app) => {
                {
                   id:2,
                   titulo: 'PHP'
+               },
+               {
+                  id:3,
+                  titulo: 'Java'
                }
             ]
          }
