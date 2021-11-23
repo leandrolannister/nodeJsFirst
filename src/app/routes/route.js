@@ -1,13 +1,15 @@
 require('../../config/html.js');
-const LivroDAO = require('../ifra/LivroDAO.js');
+const { response } = require('express');
 let bd = require('../../config/database.js');
+const LivroDAO = require('../ifra/LivroDAO.js');
+
 
 module.exports = (app) => {
     app.get('/', (req, resp) => {
         resp.send(html('Home'))
     });
 
-    app.get('/book', (req, resp) => {
+    app.get('/magazine', (req, resp) => {
         resp.marko(
             require('../view/livros/lista/lista.marko'),
             {
@@ -21,7 +23,7 @@ module.exports = (app) => {
         );
     });
 
-    app.get('/livros', (req, resp) => {
+    app.get('/magazines', (req, resp) => {
         let livroDao = new LivroDAO(bd);
 
         livroDao.all((error, books) => {
@@ -34,7 +36,7 @@ module.exports = (app) => {
         });
     });
 
-    app.get('/livrosp', (req, resp) => {
+    app.get('/livros', (req, resp) => {
         let livroDao = new LivroDAO(bd);
 
         livroDao.lista()
@@ -44,8 +46,20 @@ module.exports = (app) => {
                     { livros: books }
                 );
             })
-            .catch((error) => {
-                console.log('Error', error);
+            .catch((err) => {
+                throw new Error('Error', err)
             });
+    });
+
+    app.get('/livros/form', (req, resp) => {
+        resp.marko(
+            require('../view/form/form.marko')
+        );
+    });
+
+    app.post('/livros', (req, resp) => {
+       let livroDao = new LivroDAO(bd);
+
+       console.log(req.body);
     });
 }
