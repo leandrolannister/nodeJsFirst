@@ -59,7 +59,13 @@ module.exports = (app) => {
 
     app.post('/livros', (req, resp) => {
        let livroDao = new LivroDAO(bd);
-
-       console.log(req.body);
+       
+       livroDao.store(req.body)
+       .then((success) => {
+           console.log('Cadastrado com sucesso', success);
+       }).catch((err) => {
+           throw new Error('Error', err);
+       })
+      
     });
 }

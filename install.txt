@@ -3,6 +3,7 @@ npm install express@4.16.3 --save-exact
 npm install nodemon@18.4 --save-dev --save-exact
 npm install marko@4.13.4-1 --save-exact
 npm install sqlite3 --save-exact
+npm install body-parser@1.18.3 --save-exact
 npm uninstall <nameOfDependence>
 
 /** Se houver problema com sqlite:
