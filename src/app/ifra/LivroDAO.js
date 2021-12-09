@@ -2,11 +2,12 @@ class LivroDAO {
 
     constructor(db) {
         this._db = db;
+        this._query = "SELECT * FROM livros";
     }
 
     all(callback) {
         this._db.all(
-            'SELECT * FROM livros', (error, books) => {
+            this._query, (error, books) => {
                 callback(error, books)
             }
         )
@@ -14,7 +15,7 @@ class LivroDAO {
 
     lista() {
         return new Promise((resolve, reject) => {
-            this._db.all('select * from livros', (error, books) => {
+            this._db.all(this._query, (error, books) => {
                 if (error) return reject('Erro na lista de livros');
 
                 return resolve(books);
@@ -22,14 +23,25 @@ class LivroDAO {
         });
     }
 
-    store(data){
+    store(livro){
        return new Promise((resolve,reject) => {
-          this._db.store(`INSERT INTO livros(titulo,preco,descricao) 
-                         VALUES(${data.titulo},${data.preco},${data.titulo})`, (err,result) => {
-             if (err) return reject('Error add livros');
-             resolve(result);  
-          }); 
-
+          this._db.run(
+            `INSERT INTO livros(
+               titulo,
+               preco,
+               descricao
+            )VALUES(?,?,?)`, 
+            [
+                livro.titulo,
+                livro.preco,
+                livro.descricao
+            ],
+            (error) => {
+                if (error)
+                  reject(`Não foi possível add o livro: ${livro.titulo}`);
+                resolve();  
+            }
+          );
        });    
     }
 }

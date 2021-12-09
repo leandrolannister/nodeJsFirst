@@ -61,10 +61,11 @@ module.exports = (app) => {
        let livroDao = new LivroDAO(bd);
        
        livroDao.store(req.body)
-       .then((success) => {
-           console.log('Cadastrado com sucesso', success);
+       .then( (success) => {
+           console.warn('Cadastrado com sucesso', success);
+           resp.redirect('/livros');
        }).catch((err) => {
-           throw new Error('Error', err);
+           console.log(err);
        })
       
     });
